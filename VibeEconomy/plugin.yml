@@ -9,6 +9,6 @@ commands:
   pay:
     aliases: zahlen
   balance:
-    aliases: guthaben
-  account:
-    aliases: konto
+    aliases: [guthaben, money]
+  bank:
+    aliases: bankadmin

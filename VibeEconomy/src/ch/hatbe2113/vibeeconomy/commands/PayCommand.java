@@ -77,7 +77,8 @@ public class PayCommand implements CommandExecutor {
 					.replace("{COIN}", this.lang.getString("names.coin")));
 			
 		} else {
-			TextOutput.outputToPlayer(p, this.lang.getString("errors.wrongFormat").replace("{USAGE}", "/" + label + " <user> <amount>"));
+			TextOutput.outputToPlayer(p, this.lang.getString("errors.wrongFormat")
+					.replace("{USAGE}", "/" + label + " <user> <amount>"));
 		}
 		
 		return false;

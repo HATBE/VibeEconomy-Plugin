@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import ch.hatbe2113.vibeeconomy.commands.BalanceCommand;
+import ch.hatbe2113.vibeeconomy.commands.BankCommand;
 import ch.hatbe2113.vibeeconomy.commands.PayCommand;
 import ch.hatbe2113.vibeeconomy.events.JoinEvent;
 import ch.hatbe2113.vibeeconomy.io.ConfigHandler;
@@ -32,6 +33,7 @@ public class Main extends JavaPlugin {
 	private void registerComamnds() {
 		this.getCommand("pay").setExecutor(new PayCommand(this.lang, this.account, this.playerLookupTable));
 		this.getCommand("balance").setExecutor(new BalanceCommand(this.lang, this.account));
+		this.getCommand("bank").setExecutor(new BankCommand(this.lang, this.account, this.playerLookupTable));
 	}
 	
 	private void registerEvents() {
@@ -53,9 +55,12 @@ public class Main extends JavaPlugin {
 		this.lang.setDefaults("errors.notSelfAction", "Can't perform this action on yourself!");
 		this.lang.setDefaults("errors.notNumeric", "Please insert a number as value!");
 		this.lang.setDefaults("errors.notEnoughMoney", "You don't have enough money to afford this!");
+		this.lang.setDefaults("errors.noPerms", "You don't have the permission to execute this command!");
 		this.lang.setDefaults("messages.balance", "You're current balance: {BALANCE} {COIN}.");
 		this.lang.setDefaults("messages.targetSentMoney", "{SENDER} sent you {AMOUNT} {COIN}.");
 		this.lang.setDefaults("messages.senderSentMoney", "You sent {TARGET} {AMOUNT} {COIN}");
+		this.lang.setDefaults("messages.targetSetMoney", "{SENDER} set you're account to {AMOUNT} {COIN}.");
+		this.lang.setDefaults("messages.senderSetMoney", "You set {TARGET}'s account to {AMOUNT} {COIN}");
 		this.lang.save();
 		
 		this.account = new CustomConfigHandler(this, "account");

@@ -32,6 +32,12 @@ public class Account {
 		this.account.save();
 	}
 	
+	public void setMoney(int amount) {
+		this.balance = amount;
+		this.account.set(this.uuid + ".balance", this.balance);
+		this.account.save();
+	}
+	
 	public int getBalance() {
 		return this.balance;
 	}

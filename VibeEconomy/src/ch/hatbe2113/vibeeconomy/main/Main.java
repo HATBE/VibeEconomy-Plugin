@@ -58,9 +58,9 @@ public class Main extends JavaPlugin {
 		this.lang.setDefaults("errors.noPerms", "You don't have the permission to execute this command!");
 		this.lang.setDefaults("messages.balance", "You're current balance: {BALANCE} {COIN}.");
 		this.lang.setDefaults("messages.targetSentMoney", "{SENDER} sent you {AMOUNT} {COIN}.");
-		this.lang.setDefaults("messages.senderSentMoney", "You sent {TARGET} {AMOUNT} {COIN}");
+		this.lang.setDefaults("messages.senderSentMoney", "You sent {TARGET} {AMOUNT} {COIN}.");
 		this.lang.setDefaults("messages.targetSetMoney", "{SENDER} set you're account to {AMOUNT} {COIN}.");
-		this.lang.setDefaults("messages.senderSetMoney", "You set {TARGET}'s account to {AMOUNT} {COIN}");
+		this.lang.setDefaults("messages.senderSetMoney", "You set {TARGET}'s account to {AMOUNT} {COIN}.");
 		this.lang.save();
 		
 		this.account = new CustomConfigHandler(this, "account");

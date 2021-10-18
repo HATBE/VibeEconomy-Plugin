@@ -8,13 +8,12 @@ import ch.hatbe2113.vibeeconomy.account.Account;
 import ch.hatbe2113.vibeeconomy.io.CustomConfigHandler;
 import ch.hatbe2113.vibeeconomy.io.TextOutput;
 
-public class SetCommand {
-	
+public class AddCommand {
 	private CustomConfigHandler lang, account, playerLookupTable;
 	private CommandSender sender;
 	private String[] args;
 	
-	public SetCommand(CustomConfigHandler lang, CustomConfigHandler account, CustomConfigHandler playerLookupTable, CommandSender sender, String[] args) {
+	public AddCommand(CustomConfigHandler lang, CustomConfigHandler account, CustomConfigHandler playerLookupTable, CommandSender sender, String[] args) {
 		this.lang = lang;
 		this.account = account;
 		this.playerLookupTable = playerLookupTable;
@@ -23,7 +22,7 @@ public class SetCommand {
 		
 		this.start();
 	}
-	
+
 	private void start() {
 		Player p  = (Player) this.sender;
 		
@@ -45,18 +44,17 @@ public class SetCommand {
 		
 		Account targetAccount = new Account(this.account, targetUuid);
 		
-		targetAccount.setMoney(amount);
+		targetAccount.addMoney(amount);
 
 		if(t != null) {
-			TextOutput.outputToPlayer(t, this.lang.getString("messages.targetSetMoney")
+			TextOutput.outputToPlayer(t, this.lang.getString("messages.targetSentMoney")
 					.replace("{SENDER}", p.getDisplayName())
 					.replace("{AMOUNT}", amount + "")
 					.replace("{COIN}", this.lang.getString("names.coin")));
 		}
-		TextOutput.outputToPlayer(p, this.lang.getString("messages.senderSetMoney")
+		TextOutput.outputToPlayer(p, this.lang.getString("messages.senderSentMoney")
 				.replace("{TARGET}", args[1])
 				.replace("{AMOUNT}", amount + "")
 				.replace("{COIN}", this.lang.getString("names.coin")));
-		
 	}
 }

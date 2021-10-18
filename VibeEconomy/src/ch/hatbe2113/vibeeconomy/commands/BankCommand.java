@@ -39,7 +39,8 @@ public class BankCommand implements CommandExecutor {
 				new AddCommand(this.lang, this.account, this.playerLookupTable, sender, args);
 				return false;
 			} else if(args[0].equalsIgnoreCase("remove")) {
-				
+				new RemoveCommand(this.lang, this.account, this.playerLookupTable, sender, args);
+				return false;
 			}
 		}
 		

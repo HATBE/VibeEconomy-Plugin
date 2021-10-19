@@ -62,6 +62,7 @@ public class Main extends JavaPlugin {
 		this.lang.setDefaults("errors.notEnoughMoney", "You don't have enough money to afford this!");
 		this.lang.setDefaults("errors.noPerms", "You don't have the permission to execute this command!");
 		this.lang.setDefaults("messages.balance", "You're current balance: {BALANCE} {COIN}.");
+		this.lang.setDefaults("messages.targetBalance", "{TARGET}'s balance: {BALANCE} {COIN}.");
 		this.lang.setDefaults("messages.targetSentMoney", "{SENDER} sent you {AMOUNT} {COIN}.");
 		this.lang.setDefaults("messages.senderSentMoney", "You sent {TARGET} {AMOUNT} {COIN}.");
 		this.lang.setDefaults("messages.targetSetMoney", "{SENDER} set you're account to {AMOUNT} {COIN}.");

@@ -11,4 +11,4 @@ Admin Commands
 
 | Command                                        | Description                  | Permission     |
 |------------------------------------------------|------------------------------|----------------|
-| ```/bank [set/add/remove] <player> <amount>``` | Administrate Player accounts | vibecoin.admin |
+| ```/bank [set/add/remove/balance] <player> *<amount>``` | Administrate Player accounts | vibecoin.admin |

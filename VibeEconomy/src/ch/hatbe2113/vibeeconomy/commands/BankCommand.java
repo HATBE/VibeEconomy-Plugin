@@ -34,7 +34,12 @@ public class BankCommand implements CommandExecutor {
 			}
 		}
 		
-		if(args.length == 3) {
+		if(args.length == 2) {
+			if(args[0].equalsIgnoreCase("balance")) {
+				new BankBalanceCommand(this.lang, this.account, this.playerLookupTable, sender, args);
+				return false;
+			}
+		} else if (args.length == 3) {
 			if(args[0].equalsIgnoreCase("set")) {
 				new BankSetCommand(this.lang, this.account, this.playerLookupTable, this.logger, sender, args);
 				return false;

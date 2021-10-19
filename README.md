@@ -4,7 +4,7 @@ User Commands
 
 | Command                      | Description                           | Permission |
 |------------------------------|---------------------------------------|------------|
-| ```/balance```               | Shows the balance of your own account | -          |
+| ```/balance```               | Transfers money between players       | -          |
 | ```/pay <player> <amount>``` | Shows the balance of your own account | -          |
 
 Admin Commands

@@ -9,6 +9,7 @@ import ch.hatbe2113.vibeeconomy.io.ConfigHandler;
 import ch.hatbe2113.vibeeconomy.io.CustomConfigHandler;
 import ch.hatbe2113.vibeeconomy.io.CustomLogger;
 import ch.hatbe2113.vibeeconomy.io.TextOutput;
+import ch.hatbe2113.vibeeconomy.main.Main;
 
 public class JoinEvent implements Listener {
 	
@@ -16,12 +17,12 @@ public class JoinEvent implements Listener {
 	private CustomLogger logger;
 	private ConfigHandler config;
 	
-	public JoinEvent(CustomConfigHandler lang, CustomConfigHandler playerLookupTable, CustomConfigHandler account, CustomLogger logger, ConfigHandler config) {
-		this.playerLookupTable = playerLookupTable;
-		this.account = account;
-		this.logger = logger;
-		this.config = config;
-		this.lang = lang;
+	public JoinEvent(Main main) {
+		this.playerLookupTable = main.getPlayerLookupTable();
+		this.account = main.getAccount();
+		this.logger = main.getMoneyLogger();
+		this.config = main.getConfiguration();
+		this.lang = main.getLang();
 	}
 
 	@EventHandler

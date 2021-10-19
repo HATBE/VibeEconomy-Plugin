@@ -35,13 +35,13 @@ public class Main extends JavaPlugin {
 	}
 	
 	private void registerComamnds() {
-		this.getCommand("pay").setExecutor(new PayCommand(this.lang, this.account, this.playerLookupTable, this.moneyLogger));
-		this.getCommand("balance").setExecutor(new BalanceCommand(this.lang, this.account));
-		this.getCommand("bank").setExecutor(new BankCommand(this.lang, this.account, this.playerLookupTable, this.moneyLogger));
+		this.getCommand("pay").setExecutor(new PayCommand(this));
+		this.getCommand("balance").setExecutor(new BalanceCommand(this));
+		this.getCommand("bank").setExecutor(new BankCommand(this));
 	}
 	
 	private void registerEvents() {
-		Bukkit.getPluginManager().registerEvents(new JoinEvent(this.lang, this.playerLookupTable, this.account, this.moneyLogger, this.config), this);
+		Bukkit.getPluginManager().registerEvents(new JoinEvent(this), this);
 	}
 	
 	private void registerConfigs() {
@@ -94,6 +94,26 @@ public class Main extends JavaPlugin {
 		TextOutput.outputToConsole("", false);
 		TextOutput.outputToConsole("---------------------------------", false);
 		TextOutput.outputToConsole("", false);
+	}
+	
+	public ConfigHandler getConfiguration() {
+		return this.config;
+	}
+	
+	public CustomLogger getMoneyLogger() {
+		return this.moneyLogger;
+	}
+	
+	public CustomConfigHandler getPlayerLookupTable() {
+		return this.playerLookupTable;
+	}
+	
+	public CustomConfigHandler getAccount() {
+		return this.account;
+	}
+	
+	public CustomConfigHandler getLang() {
+		return this.lang;
 	}
 	
 }

@@ -6,19 +6,17 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import ch.hatbe2113.vibeeconomy.io.CustomConfigHandler;
-import ch.hatbe2113.vibeeconomy.io.CustomLogger;
 import ch.hatbe2113.vibeeconomy.io.TextOutput;
+import ch.hatbe2113.vibeeconomy.main.Main;
 
 public class BankCommand implements CommandExecutor {
 	
-	private CustomConfigHandler lang, account, playerLookupTable;
-	private CustomLogger logger;
+	private Main main;
+	private CustomConfigHandler lang;
 	
-	public BankCommand(CustomConfigHandler lang, CustomConfigHandler account, CustomConfigHandler playerLookupTable, CustomLogger logger) {
-		this.lang = lang;
-		this.account = account;
-		this.playerLookupTable = playerLookupTable;
-		this.logger = logger;
+	public BankCommand(Main main) {
+		this.main = main;
+		this.lang = main.getLang();
 	}
 	
 	@Override
@@ -36,18 +34,18 @@ public class BankCommand implements CommandExecutor {
 		
 		if(args.length == 2) {
 			if(args[0].equalsIgnoreCase("balance")) {
-				new BankBalanceCommand(this.lang, this.account, this.playerLookupTable, sender, args);
+				new BankBalanceCommand(this.main, sender, args);
 				return false;
 			}
 		} else if (args.length == 3) {
 			if(args[0].equalsIgnoreCase("set")) {
-				new BankSetCommand(this.lang, this.account, this.playerLookupTable, this.logger, sender, args);
+				new BankSetCommand(this.main, sender, args);
 				return false;
 			} else if(args[0].equalsIgnoreCase("add")) {
-				new BankAddCommand(this.lang, this.account, this.playerLookupTable, this.logger, sender, args);
+				new BankAddCommand(this.main, sender, args);
 				return false;
 			} else if(args[0].equalsIgnoreCase("remove")) {
-				new BankRemoveCommand(this.lang, this.account, this.playerLookupTable, this.logger, sender, args);
+				new BankRemoveCommand(this.main, sender, args);
 				return false;
 			}
 		}

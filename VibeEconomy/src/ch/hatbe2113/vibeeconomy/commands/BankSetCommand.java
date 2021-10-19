@@ -8,6 +8,7 @@ import ch.hatbe2113.vibeeconomy.account.Account;
 import ch.hatbe2113.vibeeconomy.io.CustomConfigHandler;
 import ch.hatbe2113.vibeeconomy.io.CustomLogger;
 import ch.hatbe2113.vibeeconomy.io.TextOutput;
+import ch.hatbe2113.vibeeconomy.main.Main;
 
 public class BankSetCommand {
 	
@@ -16,11 +17,11 @@ public class BankSetCommand {
 	private CommandSender sender;
 	private String[] args;
 	
-	public BankSetCommand(CustomConfigHandler lang, CustomConfigHandler account, CustomConfigHandler playerLookupTable, CustomLogger logger, CommandSender sender, String[] args) {
-		this.lang = lang;
-		this.account = account;
-		this.playerLookupTable = playerLookupTable;
-		this.logger = logger;
+	public BankSetCommand(Main main, CommandSender sender, String[] args) {
+		this.lang = main.getLang();
+		this.account = main.getAccount();
+		this.playerLookupTable = main.getPlayerLookupTable();
+		this.logger = main.getMoneyLogger();
 		this.sender = sender;
 		this.args = args;
 		

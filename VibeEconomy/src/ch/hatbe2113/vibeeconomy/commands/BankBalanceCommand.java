@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import ch.hatbe2113.vibeeconomy.account.Account;
 import ch.hatbe2113.vibeeconomy.io.CustomConfigHandler;
 import ch.hatbe2113.vibeeconomy.io.TextOutput;
+import ch.hatbe2113.vibeeconomy.main.Main;
 
 public class BankBalanceCommand {
 	private CustomConfigHandler lang, account, playerLookupTable;
@@ -15,10 +16,10 @@ public class BankBalanceCommand {
 	private String[] args;
 	private DecimalFormat formatter = new DecimalFormat("#,###");
 	
-	public BankBalanceCommand(CustomConfigHandler lang, CustomConfigHandler account, CustomConfigHandler playerLookupTable, CommandSender sender, String[] args) {
-		this.lang = lang;
-		this.account = account;
-		this.playerLookupTable = playerLookupTable;
+	public BankBalanceCommand(Main main, CommandSender sender, String[] args) {
+		this.lang = main.getLang();
+		this.account = main.getAccount();
+		this.playerLookupTable = main.getPlayerLookupTable();
 		this.sender = sender;
 		this.args = args;
 		

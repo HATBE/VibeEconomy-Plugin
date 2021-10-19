@@ -10,15 +10,16 @@ import org.bukkit.entity.Player;
 import ch.hatbe2113.vibeeconomy.account.Account;
 import ch.hatbe2113.vibeeconomy.io.CustomConfigHandler;
 import ch.hatbe2113.vibeeconomy.io.TextOutput;
+import ch.hatbe2113.vibeeconomy.main.Main;
 
 public class BalanceCommand implements CommandExecutor {
 	
 	private CustomConfigHandler lang, account;
 	private DecimalFormat formatter = new DecimalFormat("#,###");
 	
-	public BalanceCommand(CustomConfigHandler lang, CustomConfigHandler account) {
-		this.lang = lang;
-		this.account = account;
+	public BalanceCommand(Main main) {
+		this.lang = main.getLang();
+		this.account = main.getAccount();
 	}
 	
 	@Override

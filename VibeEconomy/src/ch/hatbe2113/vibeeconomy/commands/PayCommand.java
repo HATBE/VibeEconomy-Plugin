@@ -10,17 +10,18 @@ import ch.hatbe2113.vibeeconomy.account.Account;
 import ch.hatbe2113.vibeeconomy.io.CustomConfigHandler;
 import ch.hatbe2113.vibeeconomy.io.CustomLogger;
 import ch.hatbe2113.vibeeconomy.io.TextOutput;
+import ch.hatbe2113.vibeeconomy.main.Main;
 
 public class PayCommand implements CommandExecutor {
 	
 	private CustomConfigHandler lang, account, playerLookupTable;
 	private CustomLogger logger;
 	
-	public PayCommand(CustomConfigHandler lang, CustomConfigHandler account, CustomConfigHandler playerLookupTable, CustomLogger logger) {
-		this.lang = lang;
-		this.account = account;
-		this.playerLookupTable = playerLookupTable;
-		this.logger = logger;
+	public PayCommand(Main main) {
+		this.lang = main.getLang();
+		this.account = main.getAccount();
+		this.playerLookupTable = main.getPlayerLookupTable();
+		this.logger = main.getMoneyLogger();
 	}
 
 	@Override

@@ -9,6 +9,7 @@ import ch.hatbe2113.vibeeconomy.commands.PayCommand;
 import ch.hatbe2113.vibeeconomy.events.JoinEvent;
 import ch.hatbe2113.vibeeconomy.io.ConfigHandler;
 import ch.hatbe2113.vibeeconomy.io.CustomConfigHandler;
+import ch.hatbe2113.vibeeconomy.io.CustomLogger;
 import ch.hatbe2113.vibeeconomy.io.TextOutput;
 
 public class Main extends JavaPlugin {
@@ -17,9 +18,12 @@ public class Main extends JavaPlugin {
 	
 	private ConfigHandler config;
 	private CustomConfigHandler account, lang, playerLookupTable;
+	private CustomLogger moneyLogger;
 
 	public void onEnable() {
 		this.enableMessage();
+		
+		this.moneyLogger = new CustomLogger(this, "money");
 		
 		this.registerConfigs();
 		this.registerComamnds();
@@ -31,9 +35,9 @@ public class Main extends JavaPlugin {
 	}
 	
 	private void registerComamnds() {
-		this.getCommand("pay").setExecutor(new PayCommand(this.lang, this.account, this.playerLookupTable));
+		this.getCommand("pay").setExecutor(new PayCommand(this.lang, this.account, this.playerLookupTable, this.moneyLogger));
 		this.getCommand("balance").setExecutor(new BalanceCommand(this.lang, this.account));
-		this.getCommand("bank").setExecutor(new BankCommand(this.lang, this.account, this.playerLookupTable));
+		this.getCommand("bank").setExecutor(new BankCommand(this.lang, this.account, this.playerLookupTable, this.moneyLogger));
 	}
 	
 	private void registerEvents() {
@@ -42,7 +46,8 @@ public class Main extends JavaPlugin {
 	
 	private void registerConfigs() {
 		this.config = new ConfigHandler(this);
-		this.config.setDefaults("account.maxCount", 3);
+		//this.config.setDefaults("account.maxCount", 3);
+		this.config.setDefaults("starter.money", 1000);
 		this.config.save();
 		
 		this.lang = new CustomConfigHandler(this, "lang");
@@ -71,23 +76,23 @@ public class Main extends JavaPlugin {
 	}
 	
 	private void disableMessage() {
-		TextOutput.outputToConsole("");
-		TextOutput.outputToConsole("---------------------------------");
-		TextOutput.outputToConsole("");
+		TextOutput.outputToConsole("", false);
+		TextOutput.outputToConsole("---------------------------------", false);
+		TextOutput.outputToConsole("", false);
 		TextOutput.outputToConsole("Shutdown", true);
-		TextOutput.outputToConsole("");
-		TextOutput.outputToConsole("---------------------------------");
-		TextOutput.outputToConsole("");
+		TextOutput.outputToConsole("", false);
+		TextOutput.outputToConsole("---------------------------------", false);
+		TextOutput.outputToConsole("", false);
 	}
 	
 	private void enableMessage() {
-		TextOutput.outputToConsole("");
-		TextOutput.outputToConsole("---------------------------------");
-		TextOutput.outputToConsole("");
+		TextOutput.outputToConsole("", false);
+		TextOutput.outputToConsole("---------------------------------", false);
+		TextOutput.outputToConsole("", false);
 		TextOutput.outputToConsole("Startup", true);
-		TextOutput.outputToConsole("");
-		TextOutput.outputToConsole("---------------------------------");
-		TextOutput.outputToConsole("");
+		TextOutput.outputToConsole("", false);
+		TextOutput.outputToConsole("---------------------------------", false);
+		TextOutput.outputToConsole("", false);
 	}
 	
 }

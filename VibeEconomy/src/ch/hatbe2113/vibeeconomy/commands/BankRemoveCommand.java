@@ -6,17 +6,20 @@ import org.bukkit.entity.Player;
 
 import ch.hatbe2113.vibeeconomy.account.Account;
 import ch.hatbe2113.vibeeconomy.io.CustomConfigHandler;
+import ch.hatbe2113.vibeeconomy.io.CustomLogger;
 import ch.hatbe2113.vibeeconomy.io.TextOutput;
 
 public class BankRemoveCommand {
 	private CustomConfigHandler lang, account, playerLookupTable;
+	private CustomLogger logger;
 	private CommandSender sender;
 	private String[] args;
 	
-	public BankRemoveCommand(CustomConfigHandler lang, CustomConfigHandler account, CustomConfigHandler playerLookupTable, CommandSender sender, String[] args) {
+	public BankRemoveCommand(CustomConfigHandler lang, CustomConfigHandler account, CustomConfigHandler playerLookupTable, CustomLogger logger, CommandSender sender, String[] args) {
 		this.lang = lang;
 		this.account = account;
 		this.playerLookupTable = playerLookupTable;
+		this.logger = logger;
 		this.sender = sender;
 		this.args = args;
 		
@@ -61,5 +64,8 @@ public class BankRemoveCommand {
 				.replace("{TARGET}", args[1])
 				.replace("{AMOUNT}", amount + "")
 				.replace("{COIN}", this.lang.getString("names.coin")));
+		
+		this.logger.info("Player " + p.getName() + " Removed " + amount + " " + this.lang.getString("names.coin") + " from " + args[1] + "'s Account");
+
 	}
 }

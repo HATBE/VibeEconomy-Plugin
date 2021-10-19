@@ -8,16 +8,19 @@ import org.bukkit.entity.Player;
 
 import ch.hatbe2113.vibeeconomy.account.Account;
 import ch.hatbe2113.vibeeconomy.io.CustomConfigHandler;
+import ch.hatbe2113.vibeeconomy.io.CustomLogger;
 import ch.hatbe2113.vibeeconomy.io.TextOutput;
 
 public class PayCommand implements CommandExecutor {
 	
 	private CustomConfigHandler lang, account, playerLookupTable;
+	private CustomLogger logger;
 	
-	public PayCommand(CustomConfigHandler lang, CustomConfigHandler account, CustomConfigHandler playerLookupTable) {
+	public PayCommand(CustomConfigHandler lang, CustomConfigHandler account, CustomConfigHandler playerLookupTable, CustomLogger logger) {
 		this.lang = lang;
 		this.account = account;
 		this.playerLookupTable = playerLookupTable;
+		this.logger = logger;
 	}
 
 	@Override
@@ -75,6 +78,7 @@ public class PayCommand implements CommandExecutor {
 					.replace("{TARGET}", args[0])
 					.replace("{AMOUNT}", amount + "")
 					.replace("{COIN}", this.lang.getString("names.coin")));
+			this.logger.info("Player " + p.getName() + " transfered " + amount + " " + this.lang.getString("names.coin") + " to " + args[0]);
 			
 		} else {
 			TextOutput.outputToPlayer(p, this.lang.getString("errors.wrongFormat")

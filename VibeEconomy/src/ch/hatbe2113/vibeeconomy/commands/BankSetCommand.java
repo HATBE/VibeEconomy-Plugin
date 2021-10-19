@@ -8,13 +8,13 @@ import ch.hatbe2113.vibeeconomy.account.Account;
 import ch.hatbe2113.vibeeconomy.io.CustomConfigHandler;
 import ch.hatbe2113.vibeeconomy.io.TextOutput;
 
-public class SetCommand {
+public class BankSetCommand {
 	
 	private CustomConfigHandler lang, account, playerLookupTable;
 	private CommandSender sender;
 	private String[] args;
 	
-	public SetCommand(CustomConfigHandler lang, CustomConfigHandler account, CustomConfigHandler playerLookupTable, CommandSender sender, String[] args) {
+	public BankSetCommand(CustomConfigHandler lang, CustomConfigHandler account, CustomConfigHandler playerLookupTable, CommandSender sender, String[] args) {
 		this.lang = lang;
 		this.account = account;
 		this.playerLookupTable = playerLookupTable;

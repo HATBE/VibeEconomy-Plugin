@@ -8,12 +8,12 @@ import ch.hatbe2113.vibeeconomy.account.Account;
 import ch.hatbe2113.vibeeconomy.io.CustomConfigHandler;
 import ch.hatbe2113.vibeeconomy.io.TextOutput;
 
-public class AddCommand {
+public class BankRemoveCommand {
 	private CustomConfigHandler lang, account, playerLookupTable;
 	private CommandSender sender;
 	private String[] args;
 	
-	public AddCommand(CustomConfigHandler lang, CustomConfigHandler account, CustomConfigHandler playerLookupTable, CommandSender sender, String[] args) {
+	public BankRemoveCommand(CustomConfigHandler lang, CustomConfigHandler account, CustomConfigHandler playerLookupTable, CommandSender sender, String[] args) {
 		this.lang = lang;
 		this.account = account;
 		this.playerLookupTable = playerLookupTable;
@@ -44,15 +44,20 @@ public class AddCommand {
 		
 		Account targetAccount = new Account(this.account, targetUuid);
 		
-		targetAccount.addMoney(amount);
+		if(targetAccount.getBalance() < amount) {
+			amount = targetAccount.getBalance();
+			System.out.println("true");
+		}
+		
+		targetAccount.removeMoney(amount);
 
 		if(t != null) {
-			TextOutput.outputToPlayer(t, this.lang.getString("messages.targetSentMoney")
+			TextOutput.outputToPlayer(t, this.lang.getString("messages.targetRemovedMoney")
 					.replace("{SENDER}", p.getDisplayName())
 					.replace("{AMOUNT}", amount + "")
 					.replace("{COIN}", this.lang.getString("names.coin")));
 		}
-		TextOutput.outputToPlayer(p, this.lang.getString("messages.senderSentMoney")
+		TextOutput.outputToPlayer(p, this.lang.getString("messages.senderRemovedMoney")
 				.replace("{TARGET}", args[1])
 				.replace("{AMOUNT}", amount + "")
 				.replace("{COIN}", this.lang.getString("names.coin")));

@@ -20,6 +20,10 @@ public class Account {
 		
 	}
 	
+	public boolean exists() {
+		return this.account.getString(this.uuid) == null ? false : true;
+	}
+	
 	public void addMoney(int amount) {
 		this.balance += amount;
 		this.account.set(this.uuid + ".balance", this.balance);

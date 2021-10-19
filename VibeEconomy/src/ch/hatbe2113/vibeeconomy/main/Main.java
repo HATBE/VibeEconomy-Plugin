@@ -41,7 +41,7 @@ public class Main extends JavaPlugin {
 	}
 	
 	private void registerEvents() {
-		Bukkit.getPluginManager().registerEvents(new JoinEvent(this.playerLookupTable), this);
+		Bukkit.getPluginManager().registerEvents(new JoinEvent(this.lang, this.playerLookupTable, this.account, this.moneyLogger, this.config), this);
 	}
 	
 	private void registerConfigs() {
